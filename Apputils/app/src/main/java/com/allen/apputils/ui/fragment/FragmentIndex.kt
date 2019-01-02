@@ -21,4 +21,7 @@ class FragmentIndex :Fragment() {
         super.onViewCreated(view, savedInstanceState)
         textView.text = String.format(resources.getString(R.string.text),"Android")
     }
+    fun init(){
+
+    }
 }

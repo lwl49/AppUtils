@@ -8,7 +8,6 @@ import com.allen.apputils.ui.adapter.BaseFragmentAdapter
 import com.allen.apputils.ui.fragment.FragmentIndex
 import com.allen.apputils.ui.fragment.FragmentIndex1
 import com.allen.apputils.ui.fragment.FragmentIndex2
-import com.allen.apputils.utils.PhoneUtils
 import kotlinx.android.synthetic.main.act_md.*
 
 

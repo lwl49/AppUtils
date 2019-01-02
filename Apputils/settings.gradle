@@ -1,1 +1,1 @@
-include ':app', ':aputils'
+include ':app', ':aplib'
