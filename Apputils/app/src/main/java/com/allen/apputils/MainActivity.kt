@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.allen.aplibrary.LoggerUtils
 import com.allen.apputils.ui.act.MDAct
 import com.allen.apputils.utils.ScreenUtils
 import kotlinx.android.synthetic.main.activity_main.*
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         nav_view.setNavigationItemSelectedListener(this)
         Onclick()
         ScreenUtils.dp2px(this,200f)
+        LoggerUtils.e("11")
     }
 
     override fun onBackPressed() {
