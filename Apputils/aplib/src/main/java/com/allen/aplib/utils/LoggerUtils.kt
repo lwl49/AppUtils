@@ -6,10 +6,13 @@ import android.util.Log
  * create by Allen on 2019/1/2
  */
 class LoggerUtils {
-
     companion object {
         var TAG = "LoggerUtils"
-        var DEBBUG = true
+        private var DEBBUG = true
+        fun setDebbug(flag: Boolean) {
+            DEBBUG = flag
+        }
+
         fun e(title: String) {
             if (DEBBUG) {
                 Log.e(TAG, title)

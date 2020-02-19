@@ -1,4 +1,4 @@
-package com.allen.apputils.utils;
+package com.allen.aplib.utils;
 
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.hardware.usb.*;
+
+import com.allen.apputils.utils.ToastUtils;
 
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
@@ -84,7 +86,7 @@ public class UsbUtils {
                     context.unregisterReceiver(mUsbReceiver);
                 }
             } catch (final Exception e) {
-                LoggerUtils.i(e.getMessage());
+                LoggerUtils.Companion.i(e.getMessage());
             }
             pendingIntent = null;
         }
@@ -104,7 +106,7 @@ public class UsbUtils {
         Iterator<UsbDevice> deviceIterator = deviceList.values().iterator();
         while (deviceIterator.hasNext()) {
             UsbDevice device = deviceIterator.next();
-            LoggerUtils.i("vendorID--" + device.getVendorId() + "ProductId--" + device.getProductId());
+            LoggerUtils.Companion.i("vendorID--" + device.getVendorId() + "ProductId--" + device.getProductId());
             if (device.getVendorId() == vendorId && device.getProductId() == productId) {
                 return device; // 获取USBDevice
             }
@@ -190,7 +192,7 @@ public class UsbUtils {
                 if (usbDeviceConnection.requestWait() == usbRequest) {
                     byte[] retData = byteBuffer.array();
                     for (Byte byte1 : retData) {
-                        LoggerUtils.e(byte1 + "");
+                        LoggerUtils.Companion.e(byte1 + "");
                     }
                     usbCallback.readDataFromUsb(retData);
                 }
@@ -228,14 +230,14 @@ public class UsbUtils {
     public void requestPermission(UsbDevice device) {
         if (device != null) {
             if (usbManager.hasPermission(device)) {
-                LoggerUtils.e("已经获取到权限");
+                LoggerUtils.Companion.e("已经获取到权限");
                 openPort(device);
             } else {
                 if (pendingIntent != null) {
                     usbManager.requestPermission(device, pendingIntent);
-                    LoggerUtils.e("请求USB权限");
+                    LoggerUtils.Companion.e("请求USB权限");
                 } else {
-                    LoggerUtils.e("请注册USB广播");
+                    LoggerUtils.Companion.e("请注册USB广播");
                     register();
                 }
             }
@@ -245,7 +247,7 @@ public class UsbUtils {
     private final BroadcastReceiver mUsbReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            LoggerUtils.e("action", action);
+            LoggerUtils.Companion.e("action", action);
             if (ACTION_USB_PERMISSION.equals(action)) {
                 // 获取权限结果的广播
                 synchronized (this) {
@@ -253,11 +255,11 @@ public class UsbUtils {
                     if (device != null) {
                         //call method to set up device communication
                         if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
-                            LoggerUtils.e("USBReceiver", "获取权限成功：" + device.getDeviceName());
+                            LoggerUtils.Companion.e("USBReceiver", "获取权限成功：" + device.getDeviceName());
                             // 查询相关设备
                             findUSB(2385, 5698);
                         } else {
-                            LoggerUtils.e("USBReceiver", "获取权限失败：" + device.getDeviceName());
+                            LoggerUtils.Companion.e("USBReceiver", "获取权限失败：" + device.getDeviceName());
                         }
                     }
                 }
