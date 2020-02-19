@@ -1,8 +1,8 @@
 package com.allen.apputils.ui.act
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import com.allen.apputils.R
 import com.allen.apputils.ui.adapter.BaseFragmentAdapter
 import com.allen.apputils.ui.fragment.FragmentIndex
@@ -25,14 +25,14 @@ class MDAct : AppCompatActivity() {
 
     }
 
-    var mFragments: ArrayList<Fragment>? = null
+    var mFragments: ArrayList<androidx.fragment.app.Fragment>? = null
     var mTitles = arrayOf("主页", "微博", "相册")
     fun setupViewPager(){
         tabs.addTab(tabs.newTab().setText(mTitles[0]))
         tabs.addTab(tabs.newTab().setText(mTitles[1]))
         tabs.addTab(tabs.newTab().setText(mTitles[2]))
 
-        mFragments = ArrayList<Fragment>()
+        mFragments = ArrayList<androidx.fragment.app.Fragment>()
         var index = FragmentIndex()
         var index1 = FragmentIndex1()
         var index2 = FragmentIndex2()
