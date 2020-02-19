@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.allen.apputils.utils
+package com.allen.aplib.utils
 
 import android.content.Context
 import android.net.ConnectivityManager

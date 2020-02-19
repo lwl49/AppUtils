@@ -13,7 +13,6 @@ import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import com.allen.aplib.bean.AlbumBean
 import com.allen.aplib.bean.VideoInfo
-import com.allen.apputils.utils.FileComparator
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.text.DecimalFormat

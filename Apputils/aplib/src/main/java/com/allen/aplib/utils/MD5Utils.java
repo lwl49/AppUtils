@@ -1,4 +1,4 @@
-package com.allen.apputils.utils;
+package com.allen.aplib.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
