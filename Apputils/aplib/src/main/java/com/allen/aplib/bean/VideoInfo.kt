@@ -1,4 +1,4 @@
-package com.allen.apputils.bean
+package com.allen.aplib.bean
 
 /**
  * @author Allen

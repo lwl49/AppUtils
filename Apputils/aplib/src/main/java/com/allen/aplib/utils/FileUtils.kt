@@ -1,4 +1,4 @@
-package com.allen.apputils.utils
+package com.allen.aplib.utils
 
 import android.content.Context
 import android.content.Intent
@@ -11,13 +11,13 @@ import android.os.Environment
 import android.provider.BaseColumns
 import android.provider.MediaStore
 import androidx.fragment.app.Fragment
-import com.allen.apputils.bean.AlbumBean
-import com.allen.apputils.bean.VideoInfo
+import com.allen.aplib.bean.AlbumBean
+import com.allen.aplib.bean.VideoInfo
+import com.allen.apputils.utils.FileComparator
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.text.DecimalFormat
 import java.util.*
-import java.lang.reflect.AccessibleObject.setAccessible
 
 
 
