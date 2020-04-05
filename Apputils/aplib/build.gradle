@@ -33,6 +33,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+
+    implementation "com.yanzhenjie.nohttp:nohttp:$nohttp_version"
+    implementation "com.yanzhenjie.nohttp:okhttp:$nohttp_version"
 }
 repositories {
     mavenCentral()
