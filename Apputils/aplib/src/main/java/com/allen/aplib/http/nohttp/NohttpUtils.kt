@@ -1,7 +1,6 @@
 package com.allen.aplib.http.nohttp
 
 import android.content.Context
-import com.allen.aplib.http.OnResponseTemp
 import com.allen.aplib.http.ResponseCallBack
 import com.yanzhenjie.nohttp.InitializationConfig
 import com.yanzhenjie.nohttp.Logger
@@ -9,7 +8,6 @@ import com.yanzhenjie.nohttp.NoHttp
 import com.yanzhenjie.nohttp.download.DownloadQueue
 import com.yanzhenjie.nohttp.rest.Request
 import com.yanzhenjie.nohttp.rest.RequestQueue
-import com.yanzhenjie.nohttp.rest.SimpleResponseListener as SimpleResponseListener
 
 
 /**

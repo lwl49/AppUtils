@@ -12,10 +12,10 @@ interface ResponseCallBack<T> {
 
     fun onSucceed(
         what: Int,
-        response: Response<T>?
+        response: Response<T>
     )
 
-    fun onFailed(what: Int, response: Response<T>?)
+    fun onFailed(what: Int, response: Response<T>)
 
     fun onFinish(what: Int)
 }

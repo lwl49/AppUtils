@@ -1,5 +1,6 @@
-package com.allen.aplib.http
+package com.allen.aplib.http.nohttp
 
+import com.allen.aplib.http.ResponseCallBack
 import com.yanzhenjie.nohttp.rest.Response
 import com.yanzhenjie.nohttp.rest.SimpleResponseListener
 
@@ -16,12 +17,12 @@ class OnResponseTemp<T>(listener: ResponseCallBack<T>) : SimpleResponseListener<
         listener1.onStart(what)
     }
 
-    override fun onSucceed(what: Int, response: Response<T>?) {
+    override fun onSucceed(what: Int, response: Response<T>) {
         super.onSucceed(what, response)
         listener1.onSucceed(what, response)
     }
 
-    override fun onFailed(what: Int, response: Response<T>?) {
+    override fun onFailed(what: Int, response: Response<T>) {
         super.onFailed(what, response)
         listener1.onFailed(what, response)
 
