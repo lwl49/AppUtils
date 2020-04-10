@@ -6,4 +6,5 @@ package com.allen.aplib.http
  * @purpose
  */
 class ResponseBean {
+
 }

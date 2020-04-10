@@ -35,8 +35,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
 
-    implementation "com.yanzhenjie.nohttp:nohttp:$nohttp_version"
-    implementation "com.yanzhenjie.nohttp:okhttp:$nohttp_version"
+    api "com.yanzhenjie.nohttp:nohttp:$nohttp_version"
+    api "com.yanzhenjie.nohttp:okhttp:$nohttp_version"
+    api "com.google.code.gson:gson:$gson_version"
 }
 repositories {
     mavenCentral()
