@@ -38,6 +38,12 @@ dependencies {
     api "com.yanzhenjie.nohttp:nohttp:$nohttp_version"
     api "com.yanzhenjie.nohttp:okhttp:$nohttp_version"
     api "com.google.code.gson:gson:$gson_version"
+
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version" // 必要依赖，和Rxjava结合必须用到，下面会提到
+    api "com.squareup.retrofit2:converter-gson:$retrofit_version" // 必要依赖，解析json字符所用
+    api "io.reactivex.rxjava3:rxjava:$rxjava_version" // 必要rxjava3依赖
+    api "io.reactivex.rxjava3:rxandroid:$rxandroid_version" // 必要rxandrroid依赖，切线程时需要用到
 }
 repositories {
     mavenCentral()

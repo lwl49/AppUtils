@@ -1,7 +1,7 @@
 package com.allen.aplib.http.nohttp;
 
 import com.allen.aplib.http.ResponseBean;
-import com.allen.aplib.http.ResponseCallBack;
+import com.allen.aplib.http.NohttpCallBack;
 import com.yanzhenjie.nohttp.rest.Response;
 
 import org.jetbrains.annotations.NotNull;
@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 public class Test {
     public void test11(){
         ModeJsonRequest ss = new ModeJsonRequest("", ResponseBean.class);
-        NohttpUtils.Companion.getInst().request(0, ss, new ResponseCallBack<ResponseBean>() {
+        NohttpUtils.Companion.getInst().request(0, ss, new NohttpCallBack<ResponseBean>() {
             @Override
             public void onFinish(int what) {
 

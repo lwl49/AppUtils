@@ -7,7 +7,7 @@ import com.yanzhenjie.nohttp.rest.Response
  * @date 2020/4/6 0006 上午 12:18
  * @purpose  网络请求回调
  */
-interface ResponseCallBack<T> {
+interface NohttpCallBack<T> {
     fun onStart(what: Int)
 
     fun onSucceed(

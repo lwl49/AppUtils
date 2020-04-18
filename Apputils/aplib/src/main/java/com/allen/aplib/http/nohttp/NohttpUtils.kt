@@ -1,7 +1,7 @@
 package com.allen.aplib.http.nohttp
 
 import android.content.Context
-import com.allen.aplib.http.ResponseCallBack
+import com.allen.aplib.http.NohttpCallBack
 import com.yanzhenjie.nohttp.InitializationConfig
 import com.yanzhenjie.nohttp.Logger
 import com.yanzhenjie.nohttp.NoHttp
@@ -69,7 +69,7 @@ class NohttpUtils {
     fun <T> request(
         what: Int,
         request: Request<T>,
-        listener: ResponseCallBack<T>
+        listener: NohttpCallBack<T>
     ) {
         var simple = OnResponseTemp(listener)
         queue?.add(what, request,simple)

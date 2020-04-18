@@ -1,6 +1,6 @@
 package com.allen.aplib.http.nohttp
 
-import com.allen.aplib.http.ResponseCallBack
+import com.allen.aplib.http.NohttpCallBack
 import com.yanzhenjie.nohttp.rest.Response
 import com.yanzhenjie.nohttp.rest.SimpleResponseListener
 
@@ -9,8 +9,8 @@ import com.yanzhenjie.nohttp.rest.SimpleResponseListener
  * @date 2020/4/6 0006 上午 12:33
  * @purpose
  */
-class OnResponseTemp<T>(listener: ResponseCallBack<T>) : SimpleResponseListener<T>() {
-    private var listener1: ResponseCallBack<T> = listener
+class OnResponseTemp<T>(listener: NohttpCallBack<T>) : SimpleResponseListener<T>() {
+    private var listener1: NohttpCallBack<T> = listener
 
     override fun onStart(what: Int) {
         super.onStart(what)
