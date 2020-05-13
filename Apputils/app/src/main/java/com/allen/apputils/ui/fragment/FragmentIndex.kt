@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.allen.apputils.R
 import kotlinx.android.synthetic.main.fragment1.*
+
 class FragmentIndex : androidx.fragment.app.Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +20,6 @@ class FragmentIndex : androidx.fragment.app.Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        textView.text = String.format(resources.getString(R.string.text),"Android")
     }
     fun init(){
 
