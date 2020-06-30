@@ -105,12 +105,27 @@ public class TimeFormate {
         Log.d(TAG, "end ret = " + ret);
         return ret;
     }
+    /**
+     * @param data
+     *  默认时间格式化 yyyyMMdd_HHmmss
+     * */
     public static String getCurrentDate(long data){
         DateFormat df = new SimpleDateFormat("yyyyMMdd_HHmmssSSS");
         return df.format(data);
     }
+    /**
+     *  默认当前时间格式化 yyyyMMdd_HHmmssSSS
+     * */
     public static String getCurrentDate(){
         DateFormat df = new SimpleDateFormat("yyyyMMdd_HHmmssSSS");
+        return df.format(System.currentTimeMillis());
+    }
+    /**
+     * @param data long型时间
+     * @param format 需要的格式化
+     * */
+    public static String getCurrentDate(long data,String format){
+        DateFormat df = new SimpleDateFormat(format);
         return df.format(System.currentTimeMillis());
     }
 }

@@ -142,15 +142,15 @@ public class UsbUtils {
                 }
                 openPort = true;
                 reciveData();
-                ToastUtils.showToast("找到 USB 设备接口");
+                ToastUtils.showShort(mWeakContext.get(),"找到 USB 设备接口");
             } else {
                 openPort = false;
                 usbDeviceConnection.close();
-                ToastUtils.showToast("没有找到 USB 设备接口");
+                ToastUtils.showShort(mWeakContext.get(),"没有找到 USB 设备接口");
                 return false;
             }
         } else {
-            ToastUtils.showToast("没有 USB 权限");
+            ToastUtils.showShort(mWeakContext.get(),"没有 USB 权限");
             requestPermission(device);
             return false;
         }
@@ -169,7 +169,7 @@ public class UsbUtils {
             return;
         }
         int ret = usbDeviceConnection.bulkTransfer(usbEndpointOut, bytes, bytes.length, 500);
-        ToastUtils.showToast(ret + "");
+        ToastUtils.showShort(mWeakContext.get(),ret + "");
     }
 
     USBGetThread usbGetThread;

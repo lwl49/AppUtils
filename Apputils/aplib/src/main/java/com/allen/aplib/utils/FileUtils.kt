@@ -13,26 +13,26 @@ import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import com.allen.aplib.bean.AlbumBean
 import com.allen.aplib.bean.VideoInfo
-import java.io.ByteArrayOutputStream
-import java.io.File
+import java.io.*
 import java.text.DecimalFormat
 import java.util.*
 
 
-
 object FileUtils {
+   var rootDirName:String = "apputils_"+System.currentTimeMillis()  // 默认文件名，根据实际修改,必须优先设置
     /**
      * 应用根目录
      */
-    val rootDir: String
-        get() {
-            val path = Environment.getExternalStorageDirectory().toString() + "/DCIM/FeiyuCam"
-            val file = File(path)
-            if (!file.exists()) {
-                file.mkdirs()
-            }
-            return path
+    val rootDir:String
+    get()
+    {
+        val path = Environment.getExternalStorageDirectory().toString() + "/" + rootDirName+"/"
+        val file = File(path)
+        if (!file.exists()) {
+            file.mkdirs()
         }
+        return path
+    }
 
     /**
      * 图片文件夹
@@ -99,8 +99,6 @@ object FileUtils {
             return path
         }
 
-
-    var upgradeFileName = "SPHOST.BRN"
 
     /**
      * 下载文件夹
@@ -220,14 +218,34 @@ object FileUtils {
         }
 
     private val VIDEO_PROJECT = arrayOf(
-        MediaStore.Video.Media._ID,
-        MediaStore.Video.Media.DATE_MODIFIED,
-        MediaStore.Video.Media.DURATION,
-        MediaStore.Video.Media.DATA,
-        MediaStore.Video.Media.DATE_TAKEN
+            MediaStore.Video.Media._ID,
+            MediaStore.Video.Media.DATE_MODIFIED,
+            MediaStore.Video.Media.DURATION,
+            MediaStore.Video.Media.DATA,
+            MediaStore.Video.Media.DATE_TAKEN
     )
 
     var headerName = System.currentTimeMillis().toString() + ".png"
+
+    /**
+     * 应用data/packname/cache
+     */
+    fun getAppCacheDir(context: Context): String {
+        //        String path = Environment.getExternalStorageDirectory().toString() + "/DCIM/FeiyuCam";
+        return context.externalCacheDir!!.absolutePath + "/"
+    }
+
+    /**
+     * 应用data/packname/cache/dir
+     */
+    fun getAppCacheDirForDir(context: Context, dir: String): String {
+        var path = getAppCacheDir(context) + dir + "/"
+        var file = File(path)
+        if(!file.exists()){
+            file.mkdir()
+        }
+        return path
+    }
 
     /**
      * 应用data/packname/files
@@ -275,8 +293,8 @@ object FileUtils {
                 val filename = subFile[i].name
                 // 判断是否为MP4结尾
                 if (filename.trim { it <= ' ' }.toLowerCase().endsWith(".mp4") || filename.trim { it <= ' ' }.toLowerCase().endsWith(
-                        ".mov"
-                    )
+                                ".mov"
+                        )
                 ) {
                     val bean = AlbumBean()
                     bean.filename = filename
@@ -340,11 +358,11 @@ object FileUtils {
         var info: VideoInfo? = null
         val selection = MediaStore.Video.Media.DATA + " = ?"
         val cursor = context.contentResolver.query(
-            MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
-            null,
-            selection,
-            arrayOf(path),
-            null
+                MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
+                null,
+                selection,
+                arrayOf(path),
+                null
         )
         //        LoggerUtils.e("xxx", "cursor.getCount() = " + cursor.getCount());
         if (cursor != null) {
@@ -382,16 +400,16 @@ object FileUtils {
      */
     fun putFileIntoSysAlbum(context: Context, path: String) {
         MediaScannerConnection.scanFile(
-            context,
-            arrayOf(path), null, null
+                context,
+                arrayOf(path), null, null
         )
     }
 
     fun putVideoIntoSysAlbum(context: Context, path: String) {
         MediaScannerConnection.scanFile(
-            context,
-            arrayOf(path),
-            arrayOf("video/*"), null
+                context,
+                arrayOf(path),
+                arrayOf("video/*"), null
         )
     }
 
@@ -400,9 +418,9 @@ object FileUtils {
      */
     fun putImagIntoSysAlbum(context: Context, path: String) {
         MediaScannerConnection.scanFile(
-            context,
-            arrayOf(path),
-            arrayOf("image/*"), null
+                context,
+                arrayOf(path),
+                arrayOf("image/*"), null
         )
     }
 
@@ -529,23 +547,23 @@ object FileUtils {
      * */
     fun getRealPath(id: String): String {
         return MediaStore.Video.Media.EXTERNAL_CONTENT_URI.buildUpon().appendPath(id).build()
-            .toString()
+                .toString()
     }
 
     /**
      *  数据库对应字段
      * */
     private var mediaColumns = arrayOf(
-        MediaStore.Video.Media._ID,
-        MediaStore.Video.Media.DATA,
-        MediaStore.Video.Media.TITLE,
-        MediaStore.Video.Media.MIME_TYPE,
-        MediaStore.Video.Media.DISPLAY_NAME,
-        MediaStore.Video.Media.SIZE,
-        MediaStore.Video.Media.DATE_ADDED,
-        MediaStore.Video.Media.DURATION,
-        MediaStore.Video.Media.WIDTH,
-        MediaStore.Video.Media.HEIGHT
+            MediaStore.Video.Media._ID,
+            MediaStore.Video.Media.DATA,
+            MediaStore.Video.Media.TITLE,
+            MediaStore.Video.Media.MIME_TYPE,
+            MediaStore.Video.Media.DISPLAY_NAME,
+            MediaStore.Video.Media.SIZE,
+            MediaStore.Video.Media.DATE_ADDED,
+            MediaStore.Video.Media.DURATION,
+            MediaStore.Video.Media.WIDTH,
+            MediaStore.Video.Media.HEIGHT
     )
 
     /**
@@ -555,13 +573,13 @@ object FileUtils {
         var list: List<VideoInfo>? = null
         var mContentResolver = context.contentResolver
         val mCursor = mContentResolver.query(
-            MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
-            mediaColumns,
-            null,
-            null,
-            MediaStore.Video.Media.DATE_ADDED
+                MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
+                mediaColumns,
+                null,
+                null,
+                MediaStore.Video.Media.DATE_ADDED
         )
-            ?: return emptyList()
+                ?: return emptyList()
         var ixData = mCursor.getColumnIndexOrThrow(MediaStore.Video.Media.DATA)
         var ixMime = mCursor.getColumnIndexOrThrow(MediaStore.Video.Media.MIME_TYPE)
         // ID 是在 Android Q 上读取文件的关键字段
@@ -576,5 +594,59 @@ object FileUtils {
             info.path = path
         }
         return list!!
+    }
+    /**
+     *  input 转 string
+     * */
+    fun readStreamToString(inputStream: InputStream?): String? {
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        return try { //创建字节数组输出流 ，用来输出读取到的内容
+
+            //创建读取缓存,大小为1024
+            val buffer = ByteArray(1024)
+            //每次读取长度
+            var len = 0
+            //开始读取输入流中的文件
+            while (inputStream!!.read(buffer).also { len = it } != -1) { //当等于-1说明没有数据可以读取了
+                byteArrayOutputStream.write(buffer, 0, len) // 把读取的内容写入到输出流中
+            }
+            //把读取到的字节数组转换为字符串
+            val result = byteArrayOutputStream.toString()
+
+            //关闭输入流和输出流
+            inputStream.close()
+            byteArrayOutputStream.close()
+            //返回字符串结果
+            result
+        } catch (e: IOException) {
+            try {
+                inputStream?.close()
+                byteArrayOutputStream?.close()
+            } catch (ex: IOException) {
+                ex.printStackTrace()
+            }
+            e.printStackTrace()
+            null
+        }
+    }
+    /**
+     *  读取 assets 文件
+     * */
+    fun getFromAssets(fileName: String?,context: Context): String? {
+        return try {
+            var res = context.resources
+            var ass = res.assets
+            var input = ass.open(fileName)
+            val inputReader = InputStreamReader(input)
+            val bufReader = BufferedReader(inputReader)
+            var line: String? = ""
+            var result: String? = ""
+            while (bufReader.readLine().also { line = it } != null) result += line
+            result
+        } catch (e: Exception) {
+            e.printStackTrace()
+            LoggerUtils.e("xxx","error = ${e.message}")
+            null
+        }
     }
 }

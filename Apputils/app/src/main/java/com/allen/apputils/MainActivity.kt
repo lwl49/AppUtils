@@ -11,6 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.allen.aplib.utils.FileUtils
 import com.allen.aplib.utils.LogCatHelper
+import com.allen.aplib.utils.LoggerUtils
 import com.allen.apputils.ui.act.MDAct
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -36,6 +37,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         Onclick()
 
         LogCatHelper.getInstance(this,FileUtils.getAppFileLogDir(this)).start()
+
+
+        LoggerUtils.e("xxx","webpath = "+FileUtils.getAppCacheDirForDir(this,"webCache"))
+
     }
 
     override fun onBackPressed() {

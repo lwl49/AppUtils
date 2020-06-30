@@ -135,10 +135,16 @@ class PhoneUtils(act: Activity) {
         val map = HashMap<String, String>()
         val tm = context
             .getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-        val imei = tm.deviceId
-        val imsi = tm.subscriberId
-        val phoneMode = android.os.Build.MODEL
-        val phoneSDk = android.os.Build.VERSION.RELEASE
+        var imei = tm.deviceId
+        var imsi = tm.subscriberId
+        var phoneMode = android.os.Build.MODEL
+        var phoneSDk = android.os.Build.VERSION.RELEASE
+        if(imei==null){
+            imei = ""
+        }
+        if(imsi==null){
+            imsi = ""
+        }
         map["imei"] = imei
         map["imsi"] = imsi
         map["phoneMode"] = "$phoneMode##$phoneSDk"
@@ -264,5 +270,35 @@ class PhoneUtils(act: Activity) {
 
         return result!!
     }
+    /**
+     * 检测是否安装支付宝
+     * @param context
+     * @return
+     */
+    open fun isAliPayInstalled(context: Context): Boolean {
+        val uri: Uri = Uri.parse("alipays://platformapi/startApp")
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        val componentName = intent.resolveActivity(context.packageManager)
+        return componentName != null
+    }
 
+    /**
+     * 检测是否安装微信
+     * @param context
+     * @return
+     */
+    fun isWeixinAvilible(context: Context): Boolean {
+        val packageManager = context.packageManager // 获取packagemanager
+        val pinfo =
+            packageManager.getInstalledPackages(0) // 获取所有已安装程序的包信息
+        if (pinfo != null) {
+            for (i in pinfo.indices) {
+                val pn = pinfo[i].packageName
+                if (pn == "com.tencent.mm") {
+                    return true
+                }
+            }
+        }
+        return false
+    }
 }
