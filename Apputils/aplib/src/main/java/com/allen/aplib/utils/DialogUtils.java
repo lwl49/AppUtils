@@ -21,6 +21,7 @@ public class DialogUtils {
     private static Dialog customDialog;
     private static final int CANCELABLE_FLAG = 1;
     private static final int CANCELABLE_ONTOUCHOUTSIDE_FLAG = 2;
+    private static final int CANCELABLE_DONOT__FLAG = 3;
 
     private DialogUtils() {
     }
@@ -35,10 +36,9 @@ public class DialogUtils {
         showDefaultProgressDialog();
     }
 
+    public static void showDefaultProgressDialogBeCancelable(Context context, String message, boolean isCancelable, int flag) {
 
-    public static void showDefaultProgressDialogBeCancelable(Context context, String message, boolean isCancelable, int style) {
-
-        createDefaultProgressDialog(context, message, -1, false, isCancelable, style, CANCELABLE_FLAG);
+        createDefaultProgressDialog(context, message, -1, isCancelable, isCancelable, -1, flag);
         showDefaultProgressDialog();
     }
 
@@ -164,6 +164,9 @@ public class DialogUtils {
             if (flag == CANCELABLE_FLAG) {
                 defaultProgressDialog.setCancelable(isCancelable);
             } else if (flag == CANCELABLE_ONTOUCHOUTSIDE_FLAG) {
+                defaultProgressDialog.setCanceledOnTouchOutside(isCancelableOnTouchOutside);
+            }else if(flag == CANCELABLE_DONOT__FLAG){
+                defaultProgressDialog.setCancelable(isCancelable);
                 defaultProgressDialog.setCanceledOnTouchOutside(isCancelableOnTouchOutside);
             }
             defaultProgressDialog.setMessage(message);
