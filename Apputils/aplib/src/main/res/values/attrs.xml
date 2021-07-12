@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr format="reference|dimension" name="wswCornerRadius"/>
+    <attr format="reference|color" name="wswDisabledFillColor"/>
+    <attr format="reference|color" name="wswDisabledStrokeColor"/>
+    <attr format="reference|dimension" name="wswDisabledStrokeWidth"/>
+    <attr format="reference|color" name="wswDisabledTextColor"/>
+    <attr format="integer" name="wswMax"/>
+    <attr format="integer" name="wswMin"/>
+    <attr format="reference|color" name="wswNormalFillColor"/>
+    <attr format="reference|color" name="wswNormalStrokeColor"/>
+    <attr format="reference|dimension" name="wswNormalStrokeWidth"/>
+    <attr format="reference|color" name="wswNormalTextColor"/>
+    <attr format="reference|color" name="wswPressedFillColor"/>
+    <attr format="reference|color" name="wswPressedStrokeColor"/>
+    <attr format="reference|dimension" name="wswPressedStrokeWidth"/>
+    <attr format="reference|color" name="wswPressedTextColor"/>
+    <attr format="integer" name="wswProgress"/>
+    <attr format="reference|color" name="wswRippleColor"/>
+    <attr format="reference|color" name="wswSelectedFillColor"/>
+    <attr format="reference|color" name="wswSelectedStrokeColor"/>
+    <attr format="reference|dimension" name="wswSelectedStrokeWidth"/>
+    <attr format="reference|color" name="wswSelectedTextColor"/>
+    <attr format="reference|dimension" name="wswStrokeWidth"/>
+    <attr format="color|reference" name="wswTextColor"/>
+    <attr format="dimension|reference" name="wswTextSize"/>
+
+
+    <declare-styleable name="RoundTextView">
+        <attr name="wswStrokeWidth"/>
+        <attr name="wswCornerRadius"/>
+        <attr name="wswNormalStrokeColor"/>
+        <attr name="wswNormalStrokeWidth"/>
+        <attr name="wswNormalTextColor"/>
+        <attr name="wswNormalFillColor"/>
+        <attr name="wswPressedStrokeColor"/>
+        <attr name="wswPressedStrokeWidth"/>
+        <attr name="wswPressedTextColor"/>
+        <attr name="wswPressedFillColor"/>
+        <attr name="wswSelectedStrokeColor"/>
+        <attr name="wswSelectedStrokeWidth"/>
+        <attr name="wswSelectedTextColor"/>
+        <attr name="wswSelectedFillColor"/>
+        <attr name="wswDisabledStrokeColor"/>
+        <attr name="wswDisabledStrokeWidth"/>
+        <attr name="wswDisabledTextColor"/>
+        <attr name="wswDisabledFillColor"/>
+        <attr name="wswRippleColor"/>
+    </declare-styleable>
+
+    <declare-styleable name="RoundButton">
+        <attr name="wswStrokeWidth"/>
+        <attr name="wswCornerRadius"/>
+        <attr name="wswNormalStrokeColor"/>
+        <attr name="wswNormalStrokeWidth"/>
+        <attr name="wswNormalTextColor"/>
+        <attr name="wswNormalFillColor"/>
+        <attr name="wswPressedStrokeColor"/>
+        <attr name="wswPressedStrokeWidth"/>
+        <attr name="wswPressedTextColor"/>
+        <attr name="wswPressedFillColor"/>
+        <attr name="wswSelectedStrokeColor"/>
+        <attr name="wswSelectedStrokeWidth"/>
+        <attr name="wswSelectedTextColor"/>
+        <attr name="wswSelectedFillColor"/>
+        <attr name="wswDisabledStrokeColor"/>
+        <attr name="wswDisabledStrokeWidth"/>
+        <attr name="wswDisabledTextColor"/>
+        <attr name="wswDisabledFillColor"/>
+        <attr name="wswRippleColor"/>
+        <attr format="boolean" name="wswTopBottomPaddingEnabled"/>
+    </declare-styleable>
+</resources>
