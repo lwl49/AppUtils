@@ -649,4 +649,41 @@ object FileUtils {
             null
         }
     }
+
+    /**
+     *  @Purpose  通过File的方式分享   // 保存到公共目录, 从asset写到公共目录
+     *  @param fileDir /fileDir/img.jpeg
+     *  @param dirType Environment.DIRECTORY_PICTURES
+     * */
+    private fun fileShare(ctx:Context,fileDir:String,dirType:String): String {
+        val file = File(
+            Environment.getExternalStoragePublicDirectory(
+                dirType
+            ),
+            fileDir
+        )
+        if (!file.parentFile.exists()) {
+            file.mkdirs()
+        }
+        val fileOutputStream = FileOutputStream(file)
+        val inputStream = ctx.assets.open("friends.jpg")
+        val byteArray = ByteArray(1024)
+        try {
+            fileOutputStream.use { outputStream ->
+                inputStream.use { inputStream ->
+                    while (true) {
+                        val readLen = inputStream.read(byteArray)
+                        if (readLen == -1) {
+                            break
+                        }
+                        outputStream.write(byteArray, 0, readLen)
+                    }
+                }
+            }
+        } catch (e: Throwable) {
+            LoggerUtils.e("wfeii", "fileShare:$e")
+        }
+
+        return file.path
+    }
 }

@@ -7,8 +7,8 @@ android {
 
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 28
+        minSdkVersion 23
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0.8"
 
@@ -44,6 +44,9 @@ dependencies {
     api "com.squareup.retrofit2:converter-gson:$retrofit_version" // 必要依赖，解析json字符所用
     api "io.reactivex.rxjava3:rxjava:$rxjava_version" // 必要rxjava3依赖
     api "io.reactivex.rxjava3:rxandroid:$rxandroid_version" // 必要rxandrroid依赖，切线程时需要用到
+
+
+    api 'com.qiniu:qiniu-java-sdk:7.8.+'
 }
 repositories {
     mavenCentral()
